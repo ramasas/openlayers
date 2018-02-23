@@ -609,7 +609,8 @@ const ICON_STYLE_PARSERS = makeStructureNS(
     'Icon': makeObjectPropertySetter(readIcon),
     'heading': makeObjectPropertySetter(readDecimal),
     'hotSpot': makeObjectPropertySetter(readVec2),
-    'scale': makeObjectPropertySetter(readScale)
+    'scale': makeObjectPropertySetter(readScale),
+    'color': makeObjectPropertySetter(readColor)
   });
 
 
@@ -705,6 +706,8 @@ function iconStyleParser(node, objectStack) {
       offsetOrigin: IconOrigin.BOTTOM_LEFT,
       rotation: rotation,
       scale: scale,
+      color: /** @type {ol.Color} */
+          ('color' in object ? object['color'] : undefined),
       size: size,
       src: src
     });
